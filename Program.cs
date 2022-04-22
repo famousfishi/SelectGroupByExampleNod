@@ -44,7 +44,8 @@ namespace SelectGroupByExample
                 new ProfileData() { JobId = 2, JobStatus = true, Name = "Emmannuel", PropertyLease = "Arab Road" },
             };
 
-            List<ProfileDataGroup> groupedData = profileDatas.GroupBy(x => x.JobId).Select(x => new ProfileDataGroup()
+            List<ProfileDataGroup> groupedData = profileDatas.GroupBy(x => x.JobId)
+                .Select(x => new ProfileDataGroup()
             {
                 JobId = x.Key,
                 ProfileDatas = x.ToList()
