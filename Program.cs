@@ -9,6 +9,14 @@ namespace SelectGroupByExample
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            List<ProfileDataGroup> data = RetunGroupdByData();
+
+            foreach (var mydata in data)
+            {
+                //this distinctly prints only the JobIds  1 and 2 instead of printing 5 times (Three 1s and Two 2s)
+                Console.WriteLine(mydata.JobId);
+            }
         }
 
         public class ProfileData
@@ -25,7 +33,7 @@ namespace SelectGroupByExample
             public List<ProfileData> ProfileDatas { get; set; }
         }
 
-        private static void RetunGroupdByData()
+        private static List<ProfileDataGroup> RetunGroupdByData()
         {
             List<ProfileData> profileDatas = new()
             {
@@ -46,13 +54,16 @@ namespace SelectGroupByExample
             foreach (ProfileDataGroup data in groupedData)
             {
                 //do anything with the data (JobId )
+                
 
                 foreach (ProfileData profileData in data.ProfileDatas)
                 {
                     //do anything with prodile data
+                    profileData.JobStatus = false;
                 }
             }
 
+            return groupedData;
         }
     }
 }
